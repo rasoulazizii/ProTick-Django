@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Organizer(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.PROTECT)
     company_name = models.CharField(max_length=220)
     bio = models.TextField(blank=True, null=True)
     website = models.URLField()
