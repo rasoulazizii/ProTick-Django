@@ -12,3 +12,16 @@ class Organizer(models.Model):
     def __str__(self):
         return self.company_name
 
+class Event(models.Model):
+    organizer = models.ForeignKey(Organizer, on_delete=models.PROTECT)
+    description = models.TextField()
+    location = models.CharField(max_length=440)
+    image = models.ImageField(upload_to='event/')
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.description[:100]
+    
+    
