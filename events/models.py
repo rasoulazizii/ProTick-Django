@@ -24,4 +24,13 @@ class Event(models.Model):
     def __str__(self):
         return self.description[:100]
     
-    
+
+class TicketType(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.PROTECT)
+    name = models.CharField(max_length=220)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    capacity = models.PositiveIntegerField()
+    remaining_capacity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.name
