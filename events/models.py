@@ -14,6 +14,7 @@ class Organizer(models.Model):
 
 class Event(models.Model):
     organizer = models.ForeignKey(Organizer, on_delete=models.PROTECT)
+    title = models.CharField(max_length=220)
     description = models.TextField()
     location = models.CharField(max_length=440)
     image = models.ImageField(upload_to='event/')
